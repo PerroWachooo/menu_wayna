@@ -1,0 +1,10 @@
+
+  
+function abrirYCerrar(url) {
+    // Abrir nueva pestaña
+    window.open(url, '_blank');
+    
+    // Intentar cerrar la pestaña actual
+    window.close();
+}
+

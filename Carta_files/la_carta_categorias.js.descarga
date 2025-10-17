@@ -1,0 +1,44 @@
+
+  
+$(document).ready(function() {
+  var categoryLinks = $(".category-links");
+  var isUserScrolling = false;  // Bandera para el desplazamiento manual
+
+  // Función para ajustar el desplazamiento horizontal del div de categorías
+  function adjustHorizontalScroll() {
+    if (isUserScrolling) {
+      // Si el usuario está desplazando manualmente, no ajustamos el scroll
+      return;
+    }
+
+    var scrollVertical = $(window).scrollTop();
+    var documentHeight = $(document).height() - $(window).height();
+    var scrollRatio = scrollVertical / documentHeight;
+    var maxScrollHorizontal = categoryLinks[0].scrollWidth - categoryLinks.width();
+    var scrollHorizontal = scrollRatio * maxScrollHorizontal;
+
+    categoryLinks.scrollLeft(scrollHorizontal);
+  }
+
+  // Escuchar eventos de scroll
+  $(window).on('scroll', adjustHorizontalScroll);
+
+  // Detectar cuando el usuario inicia un desplazamiento manual
+  categoryLinks.on('touchstart', function() {
+    isUserScrolling = true;
+  });
+
+  // Detectar cuando el usuario termina un desplazamiento manual
+  categoryLinks.on('touchend touchcancel', function() {
+    isUserScrolling = false;
+  });
+
+  // También podrías considerar el evento 'mousedown' y 'mouseup' para no táctiles
+  categoryLinks.on('mousedown', function() {
+    isUserScrolling = true;
+  });
+  categoryLinks.on('mouseup', function() {
+    isUserScrolling = false;
+  });
+});
+
