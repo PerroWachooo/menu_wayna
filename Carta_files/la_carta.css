@@ -1,0 +1,40 @@
+.promo-container.sin-linea {
+    border-bottom: none; /* Esto quitará el borde inferior */
+}
+
+
+
+
+
+#search-input {
+  font-size:20px; 
+  padding:5px; 
+  width:200px; 
+  background-color: rgba(255, 255, 255, 0.9) !important; 
+  color: #555555;
+}
+
+.promo-outer-wrapper {
+margin-top: 30px !important;
+margin-bottom: 20px !important;
+
+}
+
+.promo-image-wrapper {
+    position: absolute;
+    top: -20px; /* Ajustar según el diseño */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Asegúrate de que este valor sea más alto que el de otros elementos que podrían superponerse */
+}
+
+.promo-image-wrapper img {
+    display: block; /* Elimina espacio extra abajo de la imagen */
+    /* Agregar más estilos si es necesario */
+}
+
+.logo-fondo {
+margin-top: 10px !important;
+margin-bottom: 10px !important;
+  background-color: none;
+}

@@ -1,0 +1,43 @@
+// Muestra la imagen y la información del producto
+function showImage(imagenFull, nombre, descripcion) {
+  var imageContainer = document.getElementById('image-container');
+  var largeImage = document.getElementById('large-image');
+  var productName = document.getElementById('product-name');
+  var productDescription = document.getElementById('product-description');
+
+  largeImage.src = imagenFull;
+  productName.innerText = nombre || ''; // Si nombre es undefined, muestra una cadena vacía
+  productDescription.innerText = descripcion || ''; // Si descripcion es undefined, muestra una cadena vacía
+
+  imageContainer.style.display = 'block';
+
+  // Escucha el clic fuera de la imagen
+  window.addEventListener('click', function(event) {
+    if (event.target == imageContainer) {
+      hideImage();
+    }
+  });
+
+  // Escucha el clic en la imagen
+  largeImage.addEventListener('click', function() {
+    hideImage();
+  });
+}
+
+// Oculta la imagen y la información del producto
+function hideImage() {
+  var imageContainer = document.getElementById('image-container');
+  imageContainer.style.display = 'none';
+
+  // Remueve el listener para evitar acumulaciones
+  window.removeEventListener('click', function(event) {
+    if (event.target == imageContainer) {
+      hideImage();
+    }
+  });
+
+  var largeImage = document.getElementById('large-image');
+  largeImage.removeEventListener('click', function() {
+    hideImage();
+  });
+}
